@@ -18,9 +18,9 @@ python main.py
 
 # Example 
 1. Select Region of Interest. Click Scan!! <br>
-![](set-box.jpg) <br>
+![](set-box.png) <br>
 2. Perspective Projection of selected ROI. <br>
-![](perspective-transform.jpg) <br>
+![](perspective-transform.png) <br>
 3. Scanned Image. <b>
-![](scanned-box.jpg) <br>
+![](scanned-box.png) <br>
 If you get any ideas to further enhance the output, please feel free to reach out!!<br>
