@@ -10,6 +10,7 @@ from scan import *
 import tkinter as tk     # python 3
 from tkinter import ttk
 # import Tkinter as tk   # python 2
+from Edge_Detection import *
 
 class Example(tk.Frame):
     """Illustrate how to drag items on a Tkinter canvas"""
@@ -19,6 +20,9 @@ class Example(tk.Frame):
 
         self.img = cv2.imread(image_name)
         # create a canvas
+        _,(topleft,bottomleft,bottomright,topright)=detect_edges(self.img)
+        # print(topleft,bottomleft,bottomright,topright)
+        
         self.canvas = tk.Canvas(width=self.img.shape[1]+100, height=self.img.shape[0])
         # self.canvas.pack(fill="both", expand=True)
         # self.canvas.pack( expand=False)
@@ -43,10 +47,10 @@ class Example(tk.Frame):
         self._drag_data = {"x": 0, "y": 0, "item": None}
 
         # create a couple of movable objects
-        self.id_topleft=self.create_token(100, 100, "red")
-        self.id_topright=self.create_token(200, 100, "red")
-        self.id_bottomleft=self.create_token(100, 200, "red")
-        self.id_bottomright=self.create_token(200, 200, "red")
+        self.id_topleft=self.create_token(topleft[0], topleft[1], "red")
+        self.id_topright=self.create_token(topright[0], topright[1], "red")
+        self.id_bottomleft=self.create_token(bottomleft[0], bottomleft[1], "red")
+        self.id_bottomright=self.create_token(bottomright[0], bottomright[1], "red")
 
         self.x_topleft=self.canvas.coords(self.id_topleft)[0]+5
         self.y_topleft=self.canvas.coords(self.id_topleft)[1]+5
@@ -232,7 +236,7 @@ class Example(tk.Frame):
             self.x_bottomright=event.x
             self.y_bottomright=event.y
 if __name__ == "__main__":
-    image_name="test.jpg"
+    image_name="book_page.jpg"
     root = tk.Tk()
     root.title("Image Scanner")
     # root.wm_geometry("1100x1100")
