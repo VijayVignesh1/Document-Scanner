@@ -4,8 +4,8 @@ Simpler version of CamScanner. <br>
 Automatic edge detection yet to be implemented. But users will be able to selected the region of interest interactively. <br>
 
 ## Requirements
-Tkinter 8.6 <br>
-OpenCV 4.2.0 <br>
+Tkinter>=8.6 <br>
+OpenCV>=4.2.0 <br>
 
 
 ## Steps to run
